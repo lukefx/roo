@@ -66,7 +66,7 @@ class Roo::Csv < Roo::GenericSpreadsheet
     @first_column[sheet] = 1
     @last_column[sheet] = 1
     rownum = 1
-    CSV.foreach(@filename, :encoding => 'windows-1251:utf-8') do |row|
+    CSV.foreach(@filename, :encoding => 'windows-1251:utf-8', :col_sep => ";") do |row|
       row.each_with_index do |elem,i|
         @cell[[rownum,i+1]] = cell_postprocessing rownum,i+1, elem
         @cell_type[[rownum,i+1]] = celltype_class @cell[[rownum,i+1]]
